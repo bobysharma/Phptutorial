@@ -6,6 +6,16 @@ function createdata(){
     global $connection;
     $username=$_POST['username'];
     $password=$_POST['password'];
+    $username=mysqli_real_escape_string($connection,$username);
+    $password=mysqli_real_escape_string($connection,$password);
+
+
+    $hashformat="$2y$10$";
+    $salt="iusesomecrazystrings22";
+    $hasf_salt=$hashformat.$salt;
+    $password=crypt($password,$hasf_salt);
+
+
 //    $connection=mysqli_connect('localhost','root','','example');
    
 //    if($connection){
@@ -48,6 +58,19 @@ while($row=mysqli_fetch_assoc($result)){
 
 }
 
+function readdata(){
+    global $connection;
+    $query="SELECT * FROM loginuser";
+
+     $result=mysqli_query($connection,$query);
+
+      if(!$result){
+       die("query failrd");
+    }
+    while($row=mysqli_fetch_assoc($result)){
+        print_r($row);
+    }
+}
 
 function updatedata(){
 
