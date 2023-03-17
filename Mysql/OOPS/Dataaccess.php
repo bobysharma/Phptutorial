@@ -24,7 +24,8 @@ echo $bmw->wheels."<br>";
 // echo $bmw->sound; 
 echo $bmw->Doors();
 echo"<br>". $jet->wheels;  
-// echo"<br>". $jet->doors;  undefined property 
+// echo"<br>". $jet->doors;  undefined property show
+
 // echo "<br>".$jet->sound;
 $jet->parts();
 
